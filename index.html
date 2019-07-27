@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Time</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">請選擇電影院</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+            <option>台中大遠百威秀影城</option>
+            <option>台中Tiger City威秀影城</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">請選擇要看的電影</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+            <option>蜘蛛人：離家日</option>
+            <option>獅子王</option>
+            <option>寄生上流</option>
+            <option>名偵探柯南：紺青之拳</option>
+            <option>玩具總動員 4</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">請選擇日期</label>
+        <select class="form-control" id="exampleFormControlSelect2">
+
+        </select>
+    </div>
+    <script>
+        //設定時間物件
+        var d = new Date();
+        var weekDay = d.getDay();
+        console.log(d.getDay());
+        var temp = d.getDate();
+        d.setMonth(d.getMonth() + 1);
+        d.setDate(1);
+        d.setDate(d.getDate() - 1);
+        var lastDate = d.getDate();
+        var date = (d.getMonth() + 1) + "/" + temp;
+        //判斷星期幾要顯示多少個option
+        if (weekDay > 2) {
+            for (i = 0; i < 10 - weekDay; i++) {
+                if (temp <= lastDate) {
+                    date = (d.getMonth() + 1) + "/" + temp;
+                    temp = temp + 1;
+                } else {
+                    date = (d.getMonth() + 2) + "/" + (temp - lastDate);
+                    temp = temp + 1;
+
+                }
+                $("#exampleFormControlSelect2").append("<option>" + date + "</option>");
+                console.log(date);
+            }
+        } else {
+            for (i = 0; i < 3 - weekDay; i++) {
+                if (temp <= lastDate) {
+                    date = (d.getMonth() + 1) + "/" + temp;
+                    temp = temp + 1;
+                } else {
+                    date = (d.getMonth() + 2) + "/" + (temp - lastDate);
+                    temp = temp + 1;
+
+                }
+                $("#exampleFormControlSelect2").append("<option>" + date + "</option>");
+
+            }
+        }
+    </script>
+    <!-- 全省威秀影城隔週電影新場次公布於每週二晚間23:59 -->
+    <!-- (假設週二整天只能查到：週二 週三 週四) -->
+    <!-- 會開放未來一週(週三會查到：今天到下星期四)之場次 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
